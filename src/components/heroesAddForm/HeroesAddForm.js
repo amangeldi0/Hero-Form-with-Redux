@@ -1,7 +1,7 @@
 
 import {heroCreated} from "../../actions";
 import {useHttp} from '../../hooks/http.hook';
-import {useDispatch} from "react-redux";
+import {useDispatch ,useSelector} from "react-redux";
 import { v4 as uuidv4 } from 'uuid';
 import {useState} from "react";
 // Задача для этого компонента:
@@ -33,7 +33,7 @@ const HeroesAddForm = () => {
         })
     }
     const onSubmit = (e) => {
-
+        e.preventDefault()
 
         const newHero = {
           id: uuidv4(),
