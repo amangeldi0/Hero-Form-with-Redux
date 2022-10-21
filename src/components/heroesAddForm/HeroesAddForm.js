@@ -45,6 +45,7 @@ const HeroesAddForm = () => {
     
     const dispatch = useDispatch();
     const {request} = useHttp();
+    const options = filterOptions(filters)
     return (
         <form className="border p-4 shadow-lg rounded" onSubmit={onSubmit}>
             <div className="mb-3">
