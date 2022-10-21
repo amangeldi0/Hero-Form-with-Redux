@@ -1,0 +1,10 @@
+{
+  "heroes": [],
+  "filters": [
+    "all",
+    "fire",
+    "water",
+    "wind",
+    "earth"
+  ]
+}
