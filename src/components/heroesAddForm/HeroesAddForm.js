@@ -18,7 +18,20 @@ const HeroesAddForm = () => {
     const [heroName, setHeroName] = useState('');
     const [heroDescribe, setHeroDescribe] = useState('');
     const [heroElement, setHeroElement] = useState('');
-    
+    const {filters} = useSelector(state => state)
+
+    const filterOptions = (arr) => {
+        if (arr.length === 0){
+            return <h5 className="text-center mt-5">Фильтры не найдены</h5>
+        }
+        const arrayWithoutAll = arr.filter(item => item.name !== 'all')
+        return arrayWithoutAll.map(({name, label}) => {
+            return <option
+                key={name}
+                value={name}
+            >{label}</option>
+        })
+    }
     const onSubmit = (e) => {
 
 
