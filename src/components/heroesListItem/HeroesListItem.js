@@ -1,8 +1,7 @@
 
-const HeroesListItem = ({name, description, element, deleteHerro, id}) => {
+const HeroesListItem = ({name, describe, element, deleteHerro}) => {
 
     let elementClassName;
-
     switch (element) {
         case 'fire':
             elementClassName = 'bg-danger bg-gradient';
@@ -30,7 +29,7 @@ const HeroesListItem = ({name, description, element, deleteHerro, id}) => {
             <div className="card-body">
                 
                 <h3 className="card-title">{name}</h3>
-                <p className="card-text">{description}</p>
+                <p className="card-text">{describe}</p>
             </div>
             <span className="position-absolute top-0 start-100 translate-middle badge border rounded-pill bg-light" onClick={deleteHerro}>
                 <button type="button" className="btn-close btn-close" aria-label="Close" ></button>
