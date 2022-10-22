@@ -8,7 +8,7 @@ const HeroesAddForm = () => {
     const [heroName, setHeroName] = useState('');
     const [heroDescribe, setHeroDescribe] = useState('');
     const [heroElement, setHeroElement] = useState('');
-    const {filters} = useSelector(state => state)
+    const {filters} = useSelector(state => state.filters)
 
     const filterOptions = (arr) => {
         if (arr.length === 0){
