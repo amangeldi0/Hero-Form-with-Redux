@@ -1,26 +1,37 @@
 import { heroCreated} from "../heroesList/heroesSlice";
 import {useHttp} from '../../hooks/http.hook';
-import {useDispatch ,useSelector} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
+import {fetchFilters, selectAll} from "../heroesFilters/filterSlice";
 import { v4 as uuidv4 } from 'uuid';
-import {useState} from "react";
+import {useEffect, useState} from "react";
+import store from "../../store";
 
 const HeroesAddForm = () => {
     const [heroName, setHeroName] = useState('');
     const [heroDescribe, setHeroDescribe] = useState('');
     const [heroElement, setHeroElement] = useState('');
-    const {filters} = useSelector(state => state.filters)
-
-    const filterOptions = (arr) => {
-        if (arr.length === 0){
-            return <h5 className="text-center mt-5">Фильтры не найдены</h5>
+    const dispatch = useDispatch();
+    const {request} = useHttp();
+    const filters = selectAll(store.getState())
+    const {filtersLoadingStatus} = useSelector(state => state.filters);
+    useEffect(() => {
+        dispatch(fetchFilters())
+    }, [])
+    const renderFilters = (filters, status) => {
+        if (status === "loading") {
+            return <option>Загрузка элементов</option>
+        } else if (status === "error") {
+            return <option>Ошибка загрузки</option>
         }
-        const arrayWithoutAll = arr.filter(item => item.name !== 'all')
-        return arrayWithoutAll.map(({name, label}) => {
-            return <option
-                key={name}
-                value={name}
-            >{label}</option>
-        })
+
+        if (filters && filters.length > 0 ) {
+            return filters.map(({name, label}) => {
+                // eslint-disable-next-line
+                if (name === 'all')  return;
+
+                return <option key={name} value={name}>{label}</option>
+            })
+        }
     }
     const onSubmit = (e) => {
         e.preventDefault()
@@ -43,9 +54,8 @@ const HeroesAddForm = () => {
     
     
     
-    const dispatch = useDispatch();
-    const {request} = useHttp();
-    const options = filterOptions(filters)
+
+    const options = renderFilters(filters, filtersLoadingStatus)
     return (
         <form className="border p-4 shadow-lg rounded" onSubmit={onSubmit}>
             <div className="mb-3">
