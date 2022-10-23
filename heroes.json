@@ -1,5 +1,18 @@
 {
-  "heroes": [],
+  "heroes": [
+    {
+      "id": "3e508a33-4bbb-4915-97cb-d629049ca125",
+      "name": "Aman",
+      "describe": "NIchego",
+      "element": "fire"
+    },
+    {
+      "id": "6f060618-497f-4829-8778-56afab0b0662",
+      "name": "Aman2",
+      "describe": "kdjshfklsd",
+      "element": "water"
+    }
+  ],
   "filters": [
     {
       "name": "all",
