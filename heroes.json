@@ -1,40 +1,45 @@
 {
   "heroes": [
     {
-      "id": "3e508a33-4bbb-4915-97cb-d629049ca125",
-      "name": "Aman",
-      "describe": "NIchego",
-      "element": "fire"
+      "id": "896d6515-16cc-4f78-89ce-79438dabd7ef",
+      "name": "dsafsd",
+      "describe": "fsadfsa",
+      "element": "water"
     },
     {
-      "id": "6f060618-497f-4829-8778-56afab0b0662",
+      "id": "ed9fdec1-0bfb-4204-a4e7-76c57963e83c",
       "name": "Aman2",
-      "describe": "kdjshfklsd",
-      "element": "water"
+      "describe": "a.ksjdfh;sad",
+      "element": "fire"
     }
   ],
   "filters": [
     {
+      "id": "all",
       "name": "all",
       "label": "Все",
       "className": "btn-outline-dark"
     },
     {
+      "id": "fire",
       "name": "fire",
       "label": "Огонь",
       "className": "btn-danger"
     },
     {
+      "id": "water",
       "name": "water",
       "label": "Вода",
       "className": "btn-primary"
     },
     {
+      "id": "wind",
       "name": "wind",
       "label": "Ветер",
       "className": "btn-success"
     },
     {
+      "id": "earth",
       "name": "earth",
       "label": "Земля",
       "className": "btn-secondary"
