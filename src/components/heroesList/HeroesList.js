@@ -5,11 +5,13 @@ import { heroDeleted, fetchHeroes } from '../../actions';
 import { createSelector } from "reselect";
 import HeroesListItem from "../heroesListItem/HeroesListItem";
 import Spinner from '../spinner/Spinner';
-import { createSelector } from "reselect";
 
 const HeroesList = () => {
+
+    const dispatch = useDispatch();
+    const {request} = useHttp();
     
-    const filteredHeroesSelctor = createSelector(
+    const filteredHeroesSelector = createSelector(
         (state) => state.filters.activeFilter,
         (state) => state.heroes.heroes,
         (filter, heroes) => {
@@ -21,20 +23,12 @@ const HeroesList = () => {
             }
         }
     )
-    // const filteredHeroes = useSelector(state => {
-    //     if (state.activeFilter === 'all'){
-    //         return state.heroes
-    //     }else {
-    //         return state.heroes.filter(item => item.element === state.activeFilter)
-    //     }
-    // })
-    const filteredHeroes = useSelector(filteredHeroesSelctor)
-    const heroesLoadingStatus = useSelector(state => state.heroesLoadingStatus);
-    const dispatch = useDispatch();
-    const {request} = useHttp();
+
+    const filteredHeroes = useSelector(filteredHeroesSelector)
+    const heroesLoadingStatus = useSelector(state => state.heroes.heroesLoadingStatus);
+
 
     const deleteHerro = useCallback((id) => {
-        dispatch(heroesFetching());
         request(`http://localhost:3001/heroes/${id}`, "DELETE")
             .then(() => dispatch(heroDeleted(id)))
             .catch(error => console.log(error))
