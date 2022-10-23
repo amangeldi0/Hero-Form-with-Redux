@@ -1,8 +1,7 @@
 import { useHttp } from '../../hooks/http.hook';
 import { useCallback, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { heroDeleted} from "./heroesSlice";
-import {fetchHeroes} from "../../actions";
+import { heroDeleted, fetchHeroes} from "./heroesSlice";
 import { createSelector } from "reselect";
 import HeroesListItem from "../heroesListItem/HeroesListItem";
 import Spinner from '../spinner/Spinner';
@@ -36,7 +35,7 @@ const HeroesList = () => {
     }, [request])
 
     useEffect(() => {
-        dispatch(fetchHeroes(request));
+        dispatch(fetchHeroes());
     }, []);
 
     if (heroesLoadingStatus === "loading") {
